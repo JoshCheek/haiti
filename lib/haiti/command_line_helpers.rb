@@ -28,30 +28,22 @@ module Haiti
     end
 
     def in_proving_grounds(&block)
-      Dir.chdir proving_grounds_dir, &block
-    end
-
-    def proving_grounds_dir
-      config.proving_grounds_dir
+      Dir.chdir config.proving_grounds_dir, &block
     end
 
     def make_proving_grounds
-      FileUtils.mkdir_p proving_grounds_dir
-    end
-
-    def bin_dir
-      config.bin_dir
+      FileUtils.mkdir_p config.proving_grounds_dir
     end
 
     def path_to(filename)
-      in_proving_grounds { File.join proving_grounds_dir, filename }
+      in_proving_grounds { File.join config.proving_grounds_dir, filename }
     end
 
     # workaround for Ruby 2.0 bug where passing the new path as the first arg wasn't working
     # bug report submitted here: http://bugs.ruby-lang.org/issues/8004
     def with_bin_in_path
       original_path = ENV['PATH']
-      ENV['PATH'] = "#{bin_dir}:#{ENV['PATH']}"
+      ENV['PATH'] = "#{config.bin_dir}:#{ENV['PATH']}"
       yield
     ensure
       ENV['PATH'] = original_path
