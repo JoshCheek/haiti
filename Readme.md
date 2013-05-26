@@ -17,6 +17,13 @@ To run tests
     bundle
     bundle exec cucumber
 
+Todo
+====
+
+* Add tests showing that curlies get interpreted where expected
+* Add tests proving that bin gets stuck in the path
+* Add tests for negative assertions (currently if all step defs were empty, this would pass the suite)
+
 License
 =======
 
