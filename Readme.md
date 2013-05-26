@@ -24,6 +24,15 @@ Todo
 * Add tests proving that bin gets stuck in the path
 * Add tests for negative assertions (currently if all step defs were empty, this would pass the suite)
 
+Things that would be nice, but probably won't ever happen, b/c honestly, how often am I really going to touch this lib?
+=======================================================================================================================
+
+* all step defs work with single or double quotes
+* multiple bin directories
+* don't fucking pollute the World (currently this is how I get `eval_curlies` in there)
+* assertions about the existence and contents of files
+* a "given I'm in a clean directory" which wipes out the proving grounds
+
 License
 =======
 
