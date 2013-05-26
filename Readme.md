@@ -1,5 +1,5 @@
-Bermuda
-=======
+Haiti
+=====
 
 Aruba provides Cucumber helpers for command line programs, but it's way more sophisticated than I can understand,
 so I wind up reinventing that wheel in miniature for a lot of projects. This is just an extraction of that.

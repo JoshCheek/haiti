@@ -1,4 +1,4 @@
-module Bermuda
+module Haiti
   Config = Struct.new :bin_dir, :proving_grounds_dir
 
   def self.config

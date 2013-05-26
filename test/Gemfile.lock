@@ -1,8 +1,9 @@
 PATH
   remote: ..
   specs:
-    bermuda (1.0.0)
+    haiti (1.0.0)
       cucumber (~> 1.0)
+      rspec (~> 2.0)
 
 GEM
   remote: http://rubygems.org/
@@ -30,6 +31,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bermuda!
   cucumber
+  haiti!
   rspec

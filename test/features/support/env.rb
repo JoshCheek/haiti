@@ -1,6 +1,6 @@
-require 'bermuda'
+require 'haiti'
 
-Bermuda.configure do |config|
+Haiti.configure do |config|
   config.proving_grounds_dir = File.expand_path '../../../proving_grounds', __FILE__
   config.bin_dir             = File.expand_path '../../../bin',             __FILE__
 end

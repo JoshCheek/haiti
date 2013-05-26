@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'open3'
 
-module Bermuda
+module Haiti
   module CommandLineHelpers
     Invocation = Struct.new :stdout, :stderr, :status do
       def exitstatus
@@ -58,7 +58,7 @@ module Bermuda
     end
 
     def config
-      Bermuda.config
+      Haiti.config
     end
   end
 end

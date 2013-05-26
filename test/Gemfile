@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'bermuda', path: '..'
+gem 'haiti', path: '..'
 gem 'cucumber'
 gem 'rspec'
