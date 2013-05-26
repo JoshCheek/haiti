@@ -32,15 +32,7 @@ module Bermuda
     end
 
     def proving_grounds_dir
-      File.join root_dir, 'proving_grounds'
-    end
-
-    def root_dir
-      @root_dir ||= begin
-        dir = File.expand_path Dir.pwd
-        dir = File.dirname dir until Dir["#{dir}/*"].map { |fn| File.basename fn }.include?('lib')
-        dir
-      end
+      config.proving_grounds_dir
     end
 
     def make_proving_grounds
@@ -48,7 +40,7 @@ module Bermuda
     end
 
     def bin_dir
-      File.join root_dir, "bin"
+      config.bin_dir
     end
 
     def path_to(filename)
@@ -63,6 +55,10 @@ module Bermuda
       yield
     ensure
       ENV['PATH'] = original_path
+    end
+
+    def config
+      Bermuda.config
     end
   end
 end
