@@ -1,11 +1,11 @@
 Feature:
   Scenario:
-    Given I have the stdin content "content"
+    Given the stdin content "content"
     When I run "cat"
     Then stdout is "content"
 
   Scenario:
-    Given I have the stdin content:
+    Given the stdin content:
     """
     some
     content
