@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.email       = ["josh.cheek@gmail.com"]
   s.homepage    = "https://github.com/JoshCheek/haiti"
   s.summary     = %q{Simple Cucumber steps for command line programs}
-  s.description = "Aruba provides Cucumber helpers for command line programs, but it's way more sophisticated than I can understand, " \
-                  "so I wind up reinventing that wheel in miniature for a lot of projects. This is just an extraction of that. "       \
-                  "It aims to be simple and easy to understand/extend."
+  s.description = "Extraction of cucumber helpers for running binaries that I wind up writing ad-hoc for many projects. " \
+                  "It is minimal which lowers the barrier for entry, making it easy to understand/extend."                \
+                  "If you need something more powerful, there is Aruba."
   s.license     = "WTFPL"
 
   s.files         = `git ls-files`.split("\n")
