@@ -20,6 +20,13 @@ To run tests
 Todo
 ====
 
+**These would actually be useful right now**
+
+* All existing defs can take single or double quotes
+* Failures on stdout also display stderr
+* step def for does not include
+
+**These should just generally be done**
 * Add tests showing that curlies get interpreted where expected
 * Add tests proving that bin gets stuck in the path
 * Add tests for negative assertions (currently if all step defs were empty, this would pass the suite)
