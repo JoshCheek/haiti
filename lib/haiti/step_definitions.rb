@@ -5,7 +5,7 @@ Given('the stdin content:')                          { |content|              @s
 When('I run "$command"')                             { |command|              @last_executed = Haiti::CommandLineHelpers.execute command, @stdin_data }
 When("I run '$command'")                             { |command|              @last_executed = Haiti::CommandLineHelpers.execute command, @stdin_data }
 Then(/^(stderr|stdout) is:$/)                        { |stream_name, output|  @last_executed.send(stream_name).chomp.should == eval_curlies(output) }
-Then(/^(stderr|stdout) is ["'](.*?)["']$/)           { |stream_name, output|  @last_executed.send(stream_name).chomp.should == eval_curlies(output) }
+Then(/^(stderr|stdout) is (["'])(.*?)\2$/)           { |stream_name, _, output| @last_executed.send(stream_name).chomp.should == eval_curlies(output) }
 Then(/^(stderr|stdout) is empty$/)                   { |stream_name|          @last_executed.send(stream_name).should == '' }
 Then(/^(stderr|stdout) is not empty$/)               { |stream_name|          @last_executed.send(stream_name).chomp.should_not be_empty }
 Then(/^(stderr|stdout) includes "([^"]*)"$/)         { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
