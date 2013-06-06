@@ -53,11 +53,27 @@ Feature:
     Then stderr is not empty
 
   # stdout includes
-  Scenario: stdout includes
+  Scenario: stdout includes inline
     When I run "ruby -e '$stdout.puts %(abc)'"
     Then stdout includes "b"
 
+  Scenario: stdout includes multiline
+    When I run "ruby -e '5.times { |i| $stdout.puts i }'"
+    Then stdout includes:
+    """
+    2
+    3
+    """
+
   # stderr includes
-  Scenario: stderr includes
+  Scenario: stderr includes inline
     When I run "ruby -e '$stderr.puts %(abc)'"
     Then stderr includes "b"
+
+  Scenario: stderr includes multiline
+    When I run "ruby -e '5.times { |i| $stderr.puts i }'"
+    Then stderr includes:
+    """
+    2
+    3
+    """
