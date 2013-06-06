@@ -77,3 +77,30 @@ Feature:
     2
     3
     """
+
+  # stdout does not include
+  Scenario: stdout does not include, inline
+    When I run "ruby -e '$stdout.puts %(abc)'"
+    Then stdout does not include "z"
+
+  Scenario: stdout does not include multiline
+    When I run "ruby -e '5.times { |i| $stdout.puts i }'"
+    Then stdout does not include:
+    """
+    3
+    2
+    """
+
+  # stderr does not include
+  Scenario: stderr does not include inline
+    When I run "ruby -e '$stderr.puts %(abc)'"
+    Then stderr does not include "z"
+
+  Scenario: stderr does not include multiline
+    When I run "ruby -e '5.times { |i| $stderr.puts i }'"
+    Then stderr does not include:
+    """
+    3
+    2
+    """
+

@@ -11,3 +11,6 @@ Then(/^(stderr|stdout) is not empty$/)       { |stream_name|          @last_exec
 Then(/^(stderr|stdout) includes "([^"]*)"$/) { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
 Then(/^(stderr|stdout) includes:$/)          { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
 Then('the exit status is $status')           { |status|               @last_executed.exitstatus.to_s.should == status }
+
+Then(/^(stderr|stdout) does not include "([^"]*)"$/) { |stream_name, content| @last_executed.send(stream_name).should_not include eval_curlies(content) }
+Then(/^(stderr|stdout) does not include:$/)          { |stream_name, content| @last_executed.send(stream_name).should_not include eval_curlies(content) }
