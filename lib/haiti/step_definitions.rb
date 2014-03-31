@@ -20,8 +20,8 @@ define_steps.call(
 
 define_steps.call(
   /^(stderr|stdout) is:$/,
-  /^(stderr|stdout) is "(.*?)"$/,
-  /^(stderr|stdout) is '(.*?)'$/
+  /^(stderr|stdout) is "([^"]*?)"$/,
+  /^(stderr|stdout) is '([^']*?)'$/
 ) { |stream_name, output|  @last_executed.send(stream_name).chomp.should == eval_curlies(output) }
 
 define_steps.call(
@@ -33,7 +33,7 @@ define_steps.call(
 ) { |stream_name| @last_executed.send(stream_name).chomp.should_not be_empty }
 
 define_steps.call(
-  /^(stderr|stdout) includes "(.*?)"$/
+  /^(stderr|stdout) includes "([^"]*?)"$/
 ) { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
 
 define_steps.call(
@@ -45,7 +45,7 @@ define_steps.call(
 ) { |status| @last_executed.exitstatus.to_s.should == status }
 
 define_steps.call(
-  /^(stderr|stdout) does not include "(.*?)"$/,
+  /^(stderr|stdout) does not include "([^"]*?)"$/,
   /^(stderr|stdout) does not include:$/
 ) { |stream_name, content| @last_executed.send(stream_name).should_not include eval_curlies(content) }
 
