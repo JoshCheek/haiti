@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/JoshCheek/haiti.svg?branch=master)](https://travis-ci.org/JoshCheek/haiti)
+
 Haiti
 =====
 
