@@ -1,5 +1,7 @@
 language: ruby
-script: env BUNDLE_GEMFILE="$(ruby -e 'print File.expand_path %{test/Gemfile}')" bundle exec cucumber -r test/features/ test/features/
+env: BUNDLE_GEMFILE="$(ruby -e 'print File.expand_path %{test/Gemfile}')"
+install: bundle install
+script: bundle exec cucumber -r test/features/ test/features/
 rvm:
   - 1.9.3
   - 2.0.0
