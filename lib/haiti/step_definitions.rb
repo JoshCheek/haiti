@@ -48,3 +48,17 @@ define_steps.call(
   /^(stderr|stdout) does not include "(.*?)"$/,
   /^(stderr|stdout) does not include:$/
 ) { |stream_name, content| @last_executed.send(stream_name).should_not include eval_curlies(content) }
+
+define_steps.call(
+  /^I see the file "([^"]*?)" "([^"]*?)"$/,
+  /^I see the file '([^']*?)' '([^']*?)'$/,
+  /^I see the file '([^']*?)' "([^"]*?)"$/,
+  /^I see the file "([^"]*?)" '([^']*?)'$/,
+  /^I see the file '([^']*?)':$/,
+  /^I see the file "([^"]*?)":$/
+) { |filename, body| Haiti::CommandLineHelpers.read_file(filename).should == body }
+
+define_steps.call(
+  /^I see the file "([^"]*?)"$/,
+  /^I see the file '([^']*?)'$/
+) { |filename| Haiti::CommandLineHelpers.in_proving_grounds { File.exist?(filename).should be_true } }

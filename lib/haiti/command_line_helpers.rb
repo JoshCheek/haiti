@@ -29,6 +29,10 @@ module Haiti
       end
     end
 
+    def read_file(filename)
+      in_proving_grounds { File.read filename }
+    end
+
     def in_proving_grounds(&block)
       Dir.chdir config.proving_grounds_dir, &block
     end
