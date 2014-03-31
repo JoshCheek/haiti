@@ -1,6 +1,8 @@
 require 'fileutils'
 require 'open3'
 
+require 'haiti/config'
+
 module Haiti
   module CommandLineHelpers
     Invocation = Struct.new :stdout, :stderr, :status do

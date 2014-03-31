@@ -1,4 +1,3 @@
-require 'haiti/config'
 require 'haiti/command_line_helpers'
 require 'haiti/step_definitions'
 
