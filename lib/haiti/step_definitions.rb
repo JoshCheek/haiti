@@ -22,32 +22,32 @@ define_steps.call(
   /^(stderr|stdout) is:$/,
   /^(stderr|stdout) is "([^"]*?)"$/,
   /^(stderr|stdout) is '([^']*?)'$/
-) { |stream_name, output|  @last_executed.send(stream_name).chomp.should == eval_curlies(output) }
+) { |stream_name, output|  expect(@last_executed.send(stream_name).chomp).to eq eval_curlies(output) }
 
 define_steps.call(
   /^(stderr|stdout) is empty$/
-) { |stream_name| @last_executed.send(stream_name).should == '' }
+) { |stream_name| expect(@last_executed.send(stream_name)).to eq '' }
 
 define_steps.call(
   /^(stderr|stdout) is not empty$/
-) { |stream_name| @last_executed.send(stream_name).chomp.should_not be_empty }
+) { |stream_name| expect(@last_executed.send(stream_name).chomp).to_not be_empty }
 
 define_steps.call(
   /^(stderr|stdout) includes "([^"]*?)"$/
-) { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
+) { |stream_name, content| expect(@last_executed.send(stream_name)).to include eval_curlies(content) }
 
 define_steps.call(
   /^(stderr|stdout) includes:$/
-) { |stream_name, content| @last_executed.send(stream_name).should include eval_curlies(content) }
+) { |stream_name, content| expect(@last_executed.send(stream_name)).to include eval_curlies(content) }
 
 define_steps.call(
   'the exit status is $status'
-) { |status| @last_executed.exitstatus.to_s.should == status }
+) { |status| expect(@last_executed.exitstatus.to_s).to eq status }
 
 define_steps.call(
   /^(stderr|stdout) does not include "([^"]*?)"$/,
   /^(stderr|stdout) does not include:$/
-) { |stream_name, content| @last_executed.send(stream_name).should_not include eval_curlies(content) }
+) { |stream_name, content| expect(@last_executed.send(stream_name)).to_not include eval_curlies(content) }
 
 define_steps.call(
   /^I see the file "([^"]*?)" "([^"]*?)"$/,
@@ -56,9 +56,13 @@ define_steps.call(
   /^I see the file "([^"]*?)" '([^']*?)'$/,
   /^I see the file '([^']*?)':$/,
   /^I see the file "([^"]*?)":$/
-) { |filename, body| Haiti::CommandLineHelpers.read_file(filename).should == body }
+) { |filename, body| expect(Haiti::CommandLineHelpers.read_file(filename)).to eq body }
 
 define_steps.call(
   /^I see the file "([^"]*?)"$/,
   /^I see the file '([^']*?)'$/
-) { |filename| Haiti::CommandLineHelpers.in_proving_grounds { File.exist?(filename).should be_true } }
+) { |filename|
+  expect(
+    Haiti::CommandLineHelpers.in_proving_grounds { File.exist? filename }
+  ).to be_true
+}
