@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "cucumber", "~> 1.0"
-  s.add_dependency "rspec",    "~> 2.0" # I don't actually know where the cutoff is, but I'm not doing anything fancy here
+  s.add_dependency "rspec",    "~> 3.0"
 end

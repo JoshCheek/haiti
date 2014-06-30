@@ -4,3 +4,5 @@ script:   env BUNDLE_GEMFILE="$(ruby -e 'print File.expand_path %{test/Gemfile}'
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.1.2
+  - rbx-2.2.10

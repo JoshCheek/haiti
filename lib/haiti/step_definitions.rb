@@ -64,5 +64,5 @@ define_steps.call(
 ) { |filename|
   expect(
     Haiti::CommandLineHelpers.in_proving_grounds { File.exist? filename }
-  ).to be_true
+  ).to eq true
 }
