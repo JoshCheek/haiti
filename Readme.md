@@ -22,11 +22,15 @@ To run tests
 Todo
 ====
 
+**For my own sanity**
+* Stick all this shit on a `@haiti` ivar rather than littering it all over `self`...  I don't even know what `self` is in this case.
+
 **These would actually be useful right now**
 
+* Some way to say that I run it and it succeeds (i.e. not so much effort to print stdout on failures)
 * All existing defs can take single or double quotes
 * Failures on stdout also display stderr
-* step def for does not include
+* Step def for does not include
 
 **These should just generally be done**
 * Add tests showing that curlies get interpreted where expected
