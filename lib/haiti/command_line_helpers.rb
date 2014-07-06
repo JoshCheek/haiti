@@ -20,11 +20,12 @@ module Haiti
       end
     end
 
-    def execute(command, stdin_data=nil)
+    def execute(command, stdin_data, env_vars)
       stdin_data ||= ''
+      env_vars   ||= {}
       in_proving_grounds do
         with_bin_in_path do
-          Invocation.new *Open3.capture3(command, stdin_data: stdin_data)
+          Invocation.new *Open3.capture3(env_vars, command, stdin_data: stdin_data)
         end
       end
     end

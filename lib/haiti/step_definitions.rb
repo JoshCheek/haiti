@@ -16,7 +16,7 @@ define_steps.call(
 define_steps.call(
   'I run "$command"',
   "I run '$command'",
-) { |command| @last_executed = Haiti::CommandLineHelpers.execute command, @stdin_data }
+) { |command| @last_executed = Haiti::CommandLineHelpers.execute command, @stdin_data, @env_vars_to_set }
 
 define_steps.call(
   /^(stderr|stdout) is:$/,
@@ -65,4 +65,12 @@ define_steps.call(
   expect(
     Haiti::CommandLineHelpers.in_proving_grounds { File.exist? filename }
   ).to eq true
+}
+
+define_steps.call(
+  /^the environment variable "(.*?)" is set to "(.*?)"$/,
+  /^the environment variable "(.*?)" is set to '(.*?)'$/
+) { |name, value|
+  @env_vars_to_set ||= {}
+  @env_vars_to_set[eval_curlies(name)] = eval_curlies(value)
 }
