@@ -6,7 +6,7 @@ Before { Haiti::CommandLineHelpers.make_proving_grounds }
 
 module GeneralHelpers
   def eval_curlies(string)
-    string.gsub(/{{(.*?)}}/) { eval $1 }
+    string.gsub(/{{(.*?)}}/) { |match| eval match[2...-2] }
   end
 end
 
