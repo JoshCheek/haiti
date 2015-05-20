@@ -33,10 +33,8 @@ define_steps.call(
 ) { |stream_name| expect(@last_executed.send(stream_name).chomp).to_not be_empty }
 
 define_steps.call(
-  /^(stderr|stdout) includes "([^"]*?)"$/
-) { |stream_name, content| expect(@last_executed.send(stream_name)).to include eval_curlies(content) }
-
-define_steps.call(
+  /^(stderr|stdout) includes "([^"]*?)"$/,
+  /^(stderr|stdout) includes '([^']*?)'$/,
   /^(stderr|stdout) includes:$/
 ) { |stream_name, content| expect(@last_executed.send(stream_name)).to include eval_curlies(content) }
 
@@ -46,6 +44,7 @@ define_steps.call(
 
 define_steps.call(
   /^(stderr|stdout) does not include "([^"]*?)"$/,
+  /^(stderr|stdout) does not include '([^']*?)'$/,
   /^(stderr|stdout) does not include:$/
 ) { |stream_name, content| expect(@last_executed.send(stream_name)).to_not include eval_curlies(content) }
 

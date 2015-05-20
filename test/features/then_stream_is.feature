@@ -53,9 +53,13 @@ Feature:
     Then stderr is not empty
 
   # stdout includes
-  Scenario: stdout includes inline
-    When I run "ruby -e '$stdout.puts %(abc)'"
-    Then stdout includes "b"
+  Scenario: stdout includes inline, double quotes
+    When I run "ruby -e '$stdout.puts [97, 39, 98, 39, 99].map(&:chr).join'"
+    Then stdout includes "'b'"
+
+  Scenario: stdout includes inline, single quotes
+    When I run "ruby -e '$stdout.puts [97, 34, 98, 34, 99].map(&:chr).join'"
+    Then stdout includes '"b"'
 
   Scenario: stdout includes multiline
     When I run "ruby -e '5.times { |i| $stdout.puts i }'"
@@ -66,9 +70,13 @@ Feature:
     """
 
   # stderr includes
-  Scenario: stderr includes inline
-    When I run "ruby -e '$stderr.puts %(abc)'"
-    Then stderr includes "b"
+  Scenario: stderr includes inline, double quotes
+    When I run "ruby -e '$stderr.puts [97, 39, 98, 39, 99].map(&:chr).join'"
+    Then stderr includes "'b'"
+
+  Scenario: stderr includes inline, single quotes
+    When I run "ruby -e '$stderr.puts [97, 34, 98, 34, 99].map(&:chr).join'"
+    Then stderr includes '"b"'
 
   Scenario: stderr includes multiline
     When I run "ruby -e '5.times { |i| $stderr.puts i }'"
@@ -79,9 +87,13 @@ Feature:
     """
 
   # stdout does not include
-  Scenario: stdout does not include, inline
+  Scenario: stdout does not include, inline, double quotes
     When I run "ruby -e '$stdout.puts %(abc)'"
-    Then stdout does not include "z"
+    Then stdout does not include "'b'"
+
+  Scenario: stdout does not include, inline, single quotes
+    When I run "ruby -e '$stdout.puts %(abc)'"
+    Then stdout does not include '"b"'
 
   Scenario: stdout does not include multiline
     When I run "ruby -e '5.times { |i| $stdout.puts i }'"
@@ -92,9 +104,13 @@ Feature:
     """
 
   # stderr does not include
-  Scenario: stderr does not include inline
+  Scenario: stderr does not include inline, double quotes
     When I run "ruby -e '$stderr.puts %(abc)'"
-    Then stderr does not include "z"
+    Then stderr does not include "'b'"
+
+  Scenario: stderr does not include inline, single quotes
+    When I run "ruby -e '$stderr.puts %(abc)'"
+    Then stderr does not include '"b"'
 
   Scenario: stderr does not include multiline
     When I run "ruby -e '5.times { |i| $stderr.puts i }'"
