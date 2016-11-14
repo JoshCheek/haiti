@@ -15,7 +15,7 @@ are no negative tests to assert that things don't work, so if anyone winds up wo
 To run tests
 ============
 
-    cd tests
+    cd test
     bundle
     bundle exec cucumber
 
